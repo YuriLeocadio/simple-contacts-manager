@@ -42,6 +42,10 @@
     align-items: center;
 }
 
+.btn{
+    background-color: transparent;
+}
+
 .div-info{
     display: flex;
     flex-direction: column;
