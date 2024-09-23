@@ -42,18 +42,21 @@ export const STORAGE_SERVICE = {
     },
 
     updateContact: (updatedContact) => {
-        const storage = localStorage.getItem(DB_KEY);
+        const storage = localStorage.getItem(DB_KEY)
 
         if (storage) {
-            const storageParsed = JSON.parse(storage);
+            const storageParsed = JSON.parse(storage)
             const updatedContacts = storageParsed.map(item => {
                 if (item.contacts.number === updatedContact.contacts.number) {
-                    const newContact = { contacts: updatedContact }
-                    return [...storageParsed, newContact]
+                    return {
+                        contacts: updatedContact
+                    }
                 }
-            })
 
+                return item;
+            })
             localStorage.setItem(DB_KEY, JSON.stringify(updatedContacts))
         }
+        return alert('Contato não encontrado para atualizar')
     }
 }
